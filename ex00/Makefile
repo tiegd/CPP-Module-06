@@ -1,12 +1,16 @@
-NAME = scalar
+NAME = convert
 
 CXX = c++
 
 CXXFLAGS = -Wall -Wextra -Werror -MD -std=c++98
 
 BIN = bin/
+
+INC = include
+
+INCLUDE = $(addprefix -I , $(INC))
 			
-SRC =	main.cpp ScalarConverter.cpp	\
+SRC =	src/main.cpp src/ScalarConverter.cpp	\
 
 OBJ = $(SRC: .cpp=.o)
 OBJ := $(addprefix $(BIN), $(SRC:.cpp=.o))
@@ -15,11 +19,11 @@ DEPS =   $(OBJ:.o=.d)
 all: $(BIN) $(NAME)
 
 $(NAME): $(OBJ)
-	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
+	$(CXX) $(CXXFLAGS) $(INCLUDE) -o $(NAME) $(OBJ)
 
 $(BIN)%.o: %.cpp
 	@mkdir -p $(dir $@)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) $(INCLUDE) -c $< -o $@
 
 $(BIN):
 	mkdir -p $(BIN)
