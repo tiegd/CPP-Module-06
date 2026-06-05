@@ -6,7 +6,7 @@ CXXFLAGS = -Wall -Wextra -Werror -MD -std=c++98
 
 BIN = bin/
 			
-SRC =	main.cpp	\
+SRC =	main.cpp ScalarConverter.cpp	\
 
 OBJ = $(SRC: .cpp=.o)
 OBJ := $(addprefix $(BIN), $(SRC:.cpp=.o))
