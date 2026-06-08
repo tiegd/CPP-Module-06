@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 14:29:07 by gaducurt          #+#    #+#             */
-/*   Updated: 2026/06/05 17:10:48 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/06/08 16:57:12 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,8 @@
 #include "ScalarConverter.hpp"
 #include <cctype>
 #include <cstdlib>
-
-void	convertInt(int val);
-void	convertChar(char val);
-void	convertFloat(float val);
-void	convertDouble(double val);
+#include <iomanip>
+#include <climits>
 
 ScalarConverter::ScalarConverter()
 {
@@ -39,48 +36,28 @@ ScalarConverter::~ScalarConverter()
 {
 }
 
-void ScalarConverter::convert(std::string str)
+void	convertInt(long val)
 {
-	// char	c;
-	// int		i;
-	// float	f;
-	// double	d;
-
-	// atoi(str), atof(str), 
-
-	if (str.size() == 1)
-	{
-		// if (!std::isdigit(str[0]))
-		// 	c = str[0];
-		// else
-		// 	i = std::atoi(str.c_str());
-		if (!std::isdigit(str[0]))
-			convertChar(str[0]);
-		else
-			convertInt(std::atoi(str.c_str()));
-	}
-	else if (std::atoi(str.c_str()))
-		convertInt(std::atoi(str.c_str()));
-		// i = std::atoi(str.c_str());
-	else if (std::atof(str.c_str()))
-		convertFloat(std::atof(str.c_str()));
-		// f = std::atof(str.c_str());
-	else if(std::strtod(str.c_str(), NULL))
-		convertDouble(std::strtod(str.c_str(), NULL));
-		// d = std::strtod(str.c_str(), NULL);
-	// std::cout << "char : " << c << "\nint : " << i << "\nfloat : " << f << "\ndouble :" << d << std::endl;
-}
-
-void	convertInt(int val)
-{
+	std::cout << "convertInt" << std::endl;
 	char	c;
 	float	f;
 	double	d;
 
 	c = static_cast<char>(val);
+	if (val > 32 && val < 127)
+		std::cout << "char: " << c;
+	else if ((val >= 0 && val <= 32) || val == 127)
+		std::cout << "char: Non displayable";
+	else if (val > 127 || val < 0)
+		std::cout << "char: impossible";
+	if (val > INT_MAX || val < INT_MIN)
+		std::cout << "\nint: impossible";
+	else
+		std::cout << "\nint: " << val;
 	f = static_cast<float>(val);
 	d = static_cast<double>(val);
-	std::cout << "char : " << c << "\nint : " << val << "\nfloat : " << f << "\ndouble : " << d << std::endl;
+	std::cout << std::fixed << std::setprecision(1);
+	std::cout << "\nfloat: " << f << "f\ndouble: " << d << std::endl;
 }
 
 void	convertChar(char val)
@@ -92,7 +69,8 @@ void	convertChar(char val)
 	i = static_cast<int>(val);
 	f = static_cast<float>(val);
 	d = static_cast<double>(val);
-	std::cout << "char : " << val << "\nint : " << i << "\nfloat : " << f << "\ndouble : " << d << std::endl;
+	std::cout << std::fixed << std::setprecision(1);
+	std::cout << "char : " << val << "\nint : " << i << "\nfloat : " << f << "f\ndouble : " << d << std::endl;
 }
 
 void	convertFloat(float val)
@@ -102,9 +80,22 @@ void	convertFloat(float val)
 	double	d;
 
 	c = static_cast<char>(val);
-	i = static_cast<int>(val);
+	if (val > 32 && val < 127)
+		std::cout << "char: " << c;
+	else if ((val >= 0 && val <= 32) || val == 127)
+		std::cout << "char: Non displayable";
+	else
+		std::cout << "char: impossible";
+	if (val > (float)INT_MAX || val < (float)INT_MIN)
+		std::cout << "\nint: impossible";
+	else
+	{
+		i = static_cast<int>(val);	
+		std::cout << "\nint: " << i;
+	}
 	d = static_cast<double>(val);
-	std::cout << "char : " << c << "\nint : " << i << "\nfloat : " << val << "\ndouble : " << d << std::endl;
+	std::cout << std::fixed << std::setprecision(1);
+	std::cout << "\nfloat : " << val << "f\ndouble : " << d << std::endl;
 }
 
 void	convertDouble(double val)
@@ -114,15 +105,97 @@ void	convertDouble(double val)
 	float	f;
 	
 	c = static_cast<char>(val);
-	i = static_cast<int>(val);
+	if (val > 32 && val < 127)
+		std::cout << "char: " << c;
+	else if ((val >= 0 && val <= 32) || val == 127)
+		std::cout << "char: Non displayable";
+	else if (val > 127 || val < 0)
+		std::cout << "char: impossible";
+	if (val > (float)INT_MAX || val < (float)INT_MIN)
+		std::cout << "\nint: impossible";
+	else
+	{
+		i = static_cast<int>(val);	
+		std::cout << "\nint: " << i;
+	}
 	f = static_cast<float>(val);
-	std::cout << "char : " << c << "\nint : " << i << "\nfloat : " << f << "\ndouble : " << val << std::endl;
+	std::cout << std::fixed << std::setprecision(1);
+	std::cout << "\nfloat : " << f << "f\ndouble : " << val << std::endl;
 }
 
-/*
-- non displayable
-- impossible
-- nan / nanf
-- -inf / +inf
-- -inff / +inff
-*/
+bool	isInt(std::string str)
+{
+	for (size_t i = 0; i < str.size(); i++)
+	{
+		if (!std::isdigit(str[i]))
+		{
+			if (i != 0 && str[i] != '-')
+				return (false);
+		}
+	}
+	return (true);
+}
+
+bool	isFloat(std::string str)
+{
+	int point = 0;
+	int f = 0;
+
+	for (size_t i = 0; i < str.size(); i++)
+	{
+		if (!std::isdigit(str[i]))
+		{
+			if (i == 0 && str[i] == '-')
+				continue;
+			else if (str[i] == '.' && std::isdigit(str[i + 1]))
+				point++;
+			else if (str[i] == 'f')
+				f++;
+			else
+				return (false);
+		}
+	}
+	if (point < 2 && f == 1 && str[str.size() - 1] == 'f')
+		return (true);
+	else
+		return (false);
+}
+
+bool	isDouble(std::string str)
+{
+	int point = 0;
+	for (size_t i = 0; i < str.size(); i++)
+	{
+		if (!std::isdigit(str[i]))
+		{
+			if (i == 0 && str[i] == '-')
+				continue;
+			else if (str[i] == '.')
+				point++;
+			else
+				return (false);
+		}
+	}
+	if (point > 0 && point < 2 && std::isdigit(str[str.size() - 1]))
+		return (true);
+	else
+		return (false);
+}
+
+void ScalarConverter::convert(std::string str)
+{
+	if (isFloat(str))
+		convertFloat(std::strtof(str.c_str(), NULL));
+	else if (isDouble(str))
+		convertDouble(std::strtod(str.c_str(), NULL));
+	else if (isInt(str))
+		convertInt(std::atol(str.c_str()));
+	else if (str.size() == 1)
+		convertChar(str[0]);
+	else if (!str.compare("nan") || !str.compare("nanf"))
+		std::cout << "char: impossible\nint: impossible\nfloat: nanf\ndouble: nan"<< std::endl;
+	else if (!str.compare("inf") || !str.compare("inff"))
+		std::cout << "char: impossible\nint: impossible\nfloat: inff\ndouble: inf"<< std::endl;
+	else if (!str.compare("-inf") || !str.compare("-inff"))
+		std::cout << "char: impossible\nint: impossible\nfloat: -inff\ndouble: -inf"<< std::endl;
+}
