@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 14:45:47 by gaducurt          #+#    #+#             */
-/*   Updated: 2026/06/09 14:51:58 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/06/09 15:25:56 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,7 @@
 
 int main()
 {
-	
+	Base	*base = generate();
+	(void)base;
+	return (0);
 }

@@ -6,14 +6,16 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 14:44:36 by gaducurt          #+#    #+#             */
-/*   Updated: 2026/06/09 14:53:09 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/06/09 14:59:34 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef __B__
 #define __B__
 
-class B
+#include "Base.hpp"
+
+class B : public Base
 {
 	
 };
