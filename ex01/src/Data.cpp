@@ -6,13 +6,13 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 11:09:10 by gaducurt          #+#    #+#             */
-/*   Updated: 2026/06/09 11:33:00 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/06/09 14:08:25 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Data.hpp"
 
-Data::Data() : _name("no_name"){}
+Data::Data() : _name("jweber"){}
 
 Data::Data(const Data &obj)
 {
@@ -28,4 +28,7 @@ Data &Data::operator=(const Data &obj)
 
 Data::~Data(){}
 
-Data::Data(std::string name) : _name(name){}
+std::string Data::getName()
+{
+	return (_name);
+}

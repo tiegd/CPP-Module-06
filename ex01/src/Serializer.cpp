@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 10:59:10 by gaducurt          #+#    #+#             */
-/*   Updated: 2026/06/09 11:42:04 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/06/09 13:26:54 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,13 @@ Serializer::Serializer(){}
 
 Serializer::Serializer(const Serializer &obj)
 {
+	*this = obj;
 }
 
 Serializer &Serializer::operator=(const Serializer &obj)
 {
+	(void)obj;
+	return (*this);
 }
 
 Serializer::~Serializer(){}
@@ -31,5 +34,6 @@ uintptr_t Serializer::serialize(Data* ptr)
 
 Data* Serializer::deserialize(uintptr_t raw)
 {
-	(void)raw;
+	// (void)raw;
+	return (reinterpret_cast<Data*>(raw));
 }
