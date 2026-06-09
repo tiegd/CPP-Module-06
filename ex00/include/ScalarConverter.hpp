@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 14:26:43 by gaducurt          #+#    #+#             */
-/*   Updated: 2026/06/05 15:00:06 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/06/09 09:47:19 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class ScalarConverter
 		ScalarConverter(const ScalarConverter &obj);
 		ScalarConverter &operator=(const ScalarConverter &obj);
 		~ScalarConverter();
-		static void	convert(std::string str);
+		static int	convert(std::string str);
 };
 
 #endif

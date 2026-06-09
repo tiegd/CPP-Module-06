@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 14:29:07 by gaducurt          #+#    #+#             */
-/*   Updated: 2026/06/08 16:57:12 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/06/09 09:49:26 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ ScalarConverter::~ScalarConverter()
 
 void	convertInt(long val)
 {
-	std::cout << "convertInt" << std::endl;
 	char	c;
 	float	f;
 	double	d;
@@ -182,20 +181,43 @@ bool	isDouble(std::string str)
 		return (false);
 }
 
-void ScalarConverter::convert(std::string str)
+int ScalarConverter::convert(std::string str)
 {
 	if (isFloat(str))
+	{
 		convertFloat(std::strtof(str.c_str(), NULL));
+		return (0);
+	}
 	else if (isDouble(str))
+	{
 		convertDouble(std::strtod(str.c_str(), NULL));
+		return (0);
+	}
 	else if (isInt(str))
+	{
 		convertInt(std::atol(str.c_str()));
+		return (0);
+	}
 	else if (str.size() == 1)
+	{
 		convertChar(str[0]);
+		return (0);
+	}
 	else if (!str.compare("nan") || !str.compare("nanf"))
+	{
 		std::cout << "char: impossible\nint: impossible\nfloat: nanf\ndouble: nan"<< std::endl;
+		return (0);
+	}
 	else if (!str.compare("inf") || !str.compare("inff"))
+	{
 		std::cout << "char: impossible\nint: impossible\nfloat: inff\ndouble: inf"<< std::endl;
+		return (0);
+	}
 	else if (!str.compare("-inf") || !str.compare("-inff"))
+	{
 		std::cout << "char: impossible\nint: impossible\nfloat: -inff\ndouble: -inf"<< std::endl;
+		return (0);
+	}
+	else
+		return (1);
 }

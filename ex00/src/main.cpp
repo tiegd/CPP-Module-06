@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 16:40:31 by gaducurt          #+#    #+#             */
-/*   Updated: 2026/06/05 16:45:43 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/06/09 09:50:30 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ int	main(int ac, char **av)
 		std::cout << "need one parameter" << std::endl;
 		return (1);
 	}
-	converter.convert(av[1]);
-	return (0);
+	if (converter.convert(av[1]) == 0)
+		return (0);
+	else
+	{
+		std::cout << "wrong input" << std::endl;
+		return (1);
+	}
 }
