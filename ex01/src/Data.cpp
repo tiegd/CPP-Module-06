@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serializer.hpp                                     :+:      :+:    :+:   */
+/*   Data.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/09 10:59:04 by gaducurt          #+#    #+#             */
-/*   Updated: 2026/06/09 11:27:43 by gaducurt         ###   ########.fr       */
+/*   Created: 2026/06/09 11:09:10 by gaducurt          #+#    #+#             */
+/*   Updated: 2026/06/09 11:33:00 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __SERIALIZER__
-#define __SERIALIZER__
-
-#include <cstdint>
 #include "Data.hpp"
 
-class Serializer
-{
-	public:
-		Serializer();
-		Serializer(const Serializer &obj);
-		Serializer &operator=(const Serializer &obj);
-		~Serializer();
-		static uintptr_t	serialize(Data* ptr);
-		static Data*		deserialize(uintptr_t raw);
-};
+Data::Data() : _name("no_name"){}
 
-#endif
+Data::Data(const Data &obj)
+{
+	*this = obj;
+}
+
+Data &Data::operator=(const Data &obj)
+{
+	if (this != &obj)
+		_name = obj._name;
+	return (*this);
+}
+
+Data::~Data(){}
+
+Data::Data(std::string name) : _name(name){}

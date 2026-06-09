@@ -9,14 +9,11 @@ BIN = bin/
 INC = include
 
 INCLUDE = $(addprefix -I , $(INC))
-			
-SRC =	main.cpp src/ScalarConverter.cpp	\
+
+SRC =	main.cpp src/Serializer.cpp src/Data.hpp	\
 
 OBJ := $(addprefix $(BIN), $(SRC:.cpp=.o))
 DEPS =   $(OBJ:.o=.d)
-
-echo:
-	echo $(OBJ)
 
 all: $(BIN) $(NAME)
 
