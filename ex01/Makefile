@@ -15,6 +15,9 @@ SRC =	main.cpp src/ScalarConverter.cpp	\
 OBJ := $(addprefix $(BIN), $(SRC:.cpp=.o))
 DEPS =   $(OBJ:.o=.d)
 
+echo:
+	echo $(OBJ)
+
 all: $(BIN) $(NAME)
 
 $(NAME): $(OBJ)
