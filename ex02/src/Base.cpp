@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 14:45:40 by gaducurt          #+#    #+#             */
-/*   Updated: 2026/06/09 16:34:39 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/06/10 11:57:59 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "C.hpp"
 #include <cstdlib>
 #include <iostream>
+#include <exception>
 
 Base::~Base(){}
 
@@ -24,27 +25,70 @@ Base	*generate(void)
 	srand(time(0));
 	int nb = rand() % 3;
 	
-	std::cout << "nb = " << nb << std::endl;
-	A *a = NULL;
-	B *b = NULL;
-	C *c = NULL;
-	switch (nb)
+	if (nb == 0)
 	{
-		case 0:
-			return (a); 
-		case 1:
-			return (b);
-		case 2:
-			return (c);
+		Base *a = new A();
+		return (a); 
+	}
+	else if (nb == 1)
+	{
+		Base *b = new B();
+		return (b);
+	}
+	else
+	{
+		Base *c = new C();
+		return (c);
 	}
 }
 
 void	identify(Base *p)
 {
-	(void)p;
+	
+	A *a = dynamic_cast<A *>(p);
+	if (a != NULL)
+	{
+		std::cout << "The object's class is A" << std::endl;
+		return;
+	}
+	B *b = dynamic_cast<B *>(p);
+	if (b != NULL)
+	{
+		std::cout << "The object's class is B" << std::endl;
+		return;
+	}
+	C *c = dynamic_cast<C *>(p);
+	if (c != NULL)
+	{
+		std::cout << "The object's class is C" << std::endl;
+		return;
+	}
 }
 
 void	identify(Base &p)
 {
-	(void)p;
+	try
+	{
+		A &a = dynamic_cast<A&>(p);
+		(void)a;
+		std::cout << "The object's class is A" << std::endl;
+	}
+	catch (std::exception &e)
+	{}
+	try
+	{
+		B &b = dynamic_cast<B&>(p);
+		(void)b;
+		std::cout << "The object's class is B" << std::endl;
+	}
+	catch (std::exception &e)
+	{}
+	try
+	{
+		C &c = dynamic_cast<C&>(p);
+		(void)c;
+		std::cout << "The object's class is C" << std::endl;
+	}
+	catch (std::exception &e)
+	{}
 }
