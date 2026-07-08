@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 14:29:07 by gaducurt          #+#    #+#             */
-/*   Updated: 2026/06/09 09:49:26 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/07/08 16:46:52 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,9 @@ bool	isInt(std::string str)
 	{
 		if (!std::isdigit(str[i]))
 		{
-			if (i != 0 && str[i] != '-')
+			if (i == 0 && str[i] == '-')
+				continue;
+			else
 				return (false);
 		}
 	}
@@ -154,7 +156,7 @@ bool	isFloat(std::string str)
 				return (false);
 		}
 	}
-	if (point < 2 && f == 1 && str[str.size() - 1] == 'f')
+	if (point < 2 && point > 0 && f == 1 && str[str.size() - 1] == 'f')
 		return (true);
 	else
 		return (false);
