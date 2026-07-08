@@ -2,7 +2,7 @@ NAME = convert
 
 CXX = c++
 
-CXXFLAGS = -Wall -Wextra -Werror -MD -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -MD -std=c++98 -Wconversion
 
 BIN = bin/
 
