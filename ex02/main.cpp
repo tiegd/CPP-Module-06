@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 14:45:47 by gaducurt          #+#    #+#             */
-/*   Updated: 2026/06/10 11:47:01 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/07/10 13:25:06 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ int main()
 
 	identify(base);
 	identify(*base);
+	delete base;
 	return (0);
 }

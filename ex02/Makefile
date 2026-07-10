@@ -2,7 +2,7 @@ NAME = base
 
 CXX = c++
 
-CXXFLAGS = -Wall -Wextra -Werror -MD -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -MD -std=c++98 -g3
 
 BIN = bin/
 
@@ -10,7 +10,7 @@ INC = include
 
 INCLUDE = $(addprefix -I , $(INC))
 
-SRC =	main.cpp src/Base.cpp src/A.cpp src/B.cpp src/C.cpp	\
+SRC =	main.cpp src/Base.cpp	\
 
 OBJ := $(addprefix $(BIN), $(SRC:.cpp=.o))
 DEPS =   $(OBJ:.o=.d)

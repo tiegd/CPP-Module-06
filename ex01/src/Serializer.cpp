@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 10:59:10 by gaducurt          #+#    #+#             */
-/*   Updated: 2026/06/09 13:26:54 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/07/10 12:54:33 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,5 @@ uintptr_t Serializer::serialize(Data* ptr)
 
 Data* Serializer::deserialize(uintptr_t raw)
 {
-	// (void)raw;
 	return (reinterpret_cast<Data*>(raw));
 }
